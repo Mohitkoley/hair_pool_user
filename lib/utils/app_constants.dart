@@ -3,7 +3,8 @@ import 'package:demandium/utils/core_export.dart';
 class AppConstants {
   static const String appName = 'Hair pool';
   static const String appVersion = '2.9';
-  static const String baseUrl = 'https://evrythghair.techpeer.ng';
+  static const String baseUrl =
+      'https://hairpool.co.uk'; //'https://evrythghair.techpeer.ng';
   static const bool avoidMaintenanceMode = false;
   static const String categoryUrl = '/api/v1/customer/category?limit=20';
   static const String webLandingContents = '/api/v1/customer/landing/contents';

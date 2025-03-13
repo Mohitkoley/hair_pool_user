@@ -34,7 +34,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.sixamtech.demandium.user"
-    compileSdk 34
+    compileSdk 35
     ndkVersion "25.1.8937393"//flutter.ndkVersion
 
     compileOptions {
