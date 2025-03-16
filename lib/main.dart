@@ -33,7 +33,7 @@ Future<void> main() async {
       version: "v15.0",
     );
   } else {
-    await Firebase.initializeApp();
+    // await Firebase.initializeApp();
   }
 
   if (defaultTargetPlatform == TargetPlatform.android) {
