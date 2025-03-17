@@ -14,7 +14,7 @@ Future<void> main() async {
   }
   setPathUrlStrategy();
 
-  if (GetPlatform.isWeb || GetPlatform.isAndroid) {
+  if (GetPlatform.isWeb || GetPlatform.isAndroid || GetPlatform.isIOS) {
     await Firebase.initializeApp(
       name: 'demancms',
       options: const FirebaseOptions(
