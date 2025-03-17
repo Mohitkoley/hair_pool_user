@@ -199,10 +199,11 @@ void _checkPermissionAndNavigate() async {
     ZoneResponseModel response = await Get.find<LocationController>()
         .getZone(address.latitude!, address.longitude!, false);
 
-    // if (response.isSuccess) {
-    //   Get.find<LocationController>()
-    //       .saveAddressAndNavigate(address, false, '', false, true);
-    // } else {
+    if (response.isSuccess) {
+      Get.find<LocationController>()
+          .saveAddressAndNavigate(address, false, '', false, true);
+    }
+    //else {
     //   Get.back();
     //   Get.offAllNamed(RouteHelper.getPickMapRoute("", false, "", null, null));
     // }
