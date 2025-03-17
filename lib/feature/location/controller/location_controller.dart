@@ -507,14 +507,14 @@ class LocationController extends GetxController implements GetxService {
     if (GetPlatform.isAndroid && !GetPlatform.isWeb) {
       if (getUserAddress() != null) {
         if (getUserAddress()!.zoneId != address.zoneId) {
-          FirebaseMessaging.instance.unsubscribeFromTopic(
-              'zone_${getUserAddress()!.zoneId}_customer');
-          FirebaseMessaging.instance
-              .subscribeToTopic('zone_${address.zoneId}_customer');
+          // FirebaseMessaging.instance.unsubscribeFromTopic(
+          //     'zone_${getUserAddress()!.zoneId}_customer');
+          // FirebaseMessaging.instance
+          //     .subscribeToTopic('zone_${address.zoneId}_customer');
         }
       } else {
-        FirebaseMessaging.instance
-            .subscribeToTopic('zone_${address.zoneId}_customer');
+        // FirebaseMessaging.instance
+        //     .subscribeToTopic('zone_${address.zoneId}_customer');
       }
     }
     await saveUserAddress(address);
