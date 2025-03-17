@@ -2,7 +2,7 @@ package_rename_config:
   android:
     app_name: "Hair pool" # (String) The display name of the android app
     package_name: com.hairpool.user #com.sixamtech.everything.user # (String) The package name of the android app
-    override_old_package: com.hairpool.demandium # (Optional) (String) Use this to delete the old folder structure of MainActivity or to use the existing code with the new package name
+    override_old_package: com.hairpool.user # (Optional) (String) Use this to delete the old folder structure of MainActivity or to use the existing code with the new package name
     lang: # (Optional) (String) The android development language {kotlin(default) or java}
 
   ios:
