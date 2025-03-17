@@ -1,4 +1,4 @@
-package com.hairpool.demandium
+package com.hairpool.user
 
 import io.flutter.embedding.android.FlutterActivity
 
