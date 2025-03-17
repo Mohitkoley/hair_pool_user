@@ -15,16 +15,16 @@ Future<void> main() async {
   setPathUrlStrategy();
 
   if (GetPlatform.isWeb || GetPlatform.isAndroid) {
-    // await Firebase.initializeApp(
-    //   name: 'demancms',
-    //   options: const FirebaseOptions(
-    //       apiKey: "AIzaSyATwpBSYz69b5Y9ryQLELOJIHZSpJcXf7I",
-    //       authDomain: "demancms.firebaseapp.com",
-    //       projectId: "demancms",
-    //       storageBucket: "demancms.appspot.com",
-    //       messagingSenderId: "889759666168",
-    //       appId: "1:889759666168:web:ab661cb341d3e47384d00d"),
-    // );
+    await Firebase.initializeApp(
+      name: 'demancms',
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyATwpBSYz69b5Y9ryQLELOJIHZSpJcXf7I",
+          authDomain: "demancms.firebaseapp.com",
+          projectId: "demancms",
+          storageBucket: "demancms.appspot.com",
+          messagingSenderId: "889759666168",
+          appId: "1:889759666168:web:ab661cb341d3e47384d00d"),
+    );
 
     await FacebookAuth.instance.webAndDesktopInitialize(
       appId: "637072917840079",
@@ -48,13 +48,13 @@ Future<void> main() async {
       path = await initDynamicLinks();
     }
 
-    // final RemoteMessage? remoteMessage =
-    //     await FirebaseMessaging.instance.getInitialMessage();
-    // if (remoteMessage != null) {
-    //   body = NotificationHelper.convertNotification(remoteMessage.data);
-    // }
-    // await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
-    // FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
+    final RemoteMessage? remoteMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+    if (remoteMessage != null) {
+      body = NotificationHelper.convertNotification(remoteMessage.data);
+    }
+    await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
+    FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
   } catch (e) {
     if (kDebugMode) {
       print("");

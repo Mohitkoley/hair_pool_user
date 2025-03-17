@@ -5,8 +5,8 @@ plugins {
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
-    // id("com.google.gms.google-services")
-    // id("com.google.firebase.crashlytics")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 val keyProperties = Properties()
@@ -35,7 +35,7 @@ android {
         applicationId = "com.hairpool.user"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+        minSdk = 23//flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -49,17 +49,27 @@ android {
             storeFile = file(keyProperties["storeFile"] as String)
             storePassword = keyProperties["storePassword"] as String
         }
+        create("debug") {
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+            storeFile = file("${System.getProperty("user.home")}/.android/debug.keystore")
+            storePassword = "android"
+        }
     }
 
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            // signingConfig = signingConfigs.getByName("debug")
-            // Update to use the release signing config instead of debug
+            // Release configuration
             signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+        }
+        debug {
+            // Debug configuration
+            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
         }
     }
 }
@@ -69,7 +79,7 @@ flutter {
 }
 
 dependencies {
-    // implementation "com.google.firebase:firebase-messaging:23.4.1"
+    implementation ("com.google.firebase:firebase-messaging:23.4.1")
     implementation ("androidx.multidex:multidex:2.0.1")
     coreLibraryDesugaring ("com.android.tools:desugar_jdk_libs:2.0.4")
     implementation ("androidx.window:window:1.0.0")

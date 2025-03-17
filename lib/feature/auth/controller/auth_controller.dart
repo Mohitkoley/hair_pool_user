@@ -1,5 +1,5 @@
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:demandium/utils/core_export.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController implements GetxService {
@@ -391,34 +391,36 @@ class AuthController extends GetxController implements GetxService {
     _isLoading = true;
     update();
 
-    // await FirebaseAuth.instance.verifyPhoneNumber(
-    //   phoneNumber: identity,
-    //   verificationCompleted: (PhoneAuthCredential credential) {},
-    //   verificationFailed: (FirebaseAuthException e) {
-    //     _isLoading = false;
-    //     update();
-    //     if(fromPage == "profile"){
-    //       Get.back();
-    //     }
-    //     if(e.code == 'invalid-phone-number') {
-    //       customSnackBar('please_submit_a_valid_phone_number', type: ToasterMessageType.info);
-
-    //     }else{
-    //       customSnackBar('${e.message}'.replaceAll('_', ' ').capitalizeFirst);
-    //     }
-
-    //   },
-    //   codeSent: (String vId, int? resendToken) {
-    //     _isLoading = false;
-    //     update();
-    //     if(fromPage == "profile"){
-    //       Get.back();
-    //     }
-    //     Get.toNamed(RouteHelper.getVerificationRoute(identity:identity, identityType : identityType, fromPage:  "firebase-otp", firebaseSession: vId));
-
-    //   },
-    //   codeAutoRetrievalTimeout: (String verificationId) {},
-    // );
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: identity,
+      verificationCompleted: (PhoneAuthCredential credential) {},
+      verificationFailed: (FirebaseAuthException e) {
+        _isLoading = false;
+        update();
+        if (fromPage == "profile") {
+          Get.back();
+        }
+        if (e.code == 'invalid-phone-number') {
+          customSnackBar('please_submit_a_valid_phone_number',
+              type: ToasterMessageType.info);
+        } else {
+          customSnackBar('${e.message}'.replaceAll('_', ' ').capitalizeFirst);
+        }
+      },
+      codeSent: (String vId, int? resendToken) {
+        _isLoading = false;
+        update();
+        if (fromPage == "profile") {
+          Get.back();
+        }
+        Get.toNamed(RouteHelper.getVerificationRoute(
+            identity: identity,
+            identityType: identityType,
+            fromPage: "firebase-otp",
+            firebaseSession: vId));
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
   }
 
   Future<ResponseModel> verifyOtpForVerificationScreen(
