@@ -14,7 +14,7 @@ Future<void> main() async {
   }
   setPathUrlStrategy();
 
-  if (GetPlatform.isWeb || GetPlatform.isAndroid) {
+  if (GetPlatform.isWeb || GetPlatform.isAndroid || GetPlatform.isIOS) {
     await Firebase.initializeApp(
       name: 'demancms',
       options: const FirebaseOptions(
@@ -33,11 +33,11 @@ Future<void> main() async {
       version: "v15.0",
     );
   } else {
-    // await Firebase.initializeApp();
+    await Firebase.initializeApp();
   }
 
   if (defaultTargetPlatform == TargetPlatform.android) {
-    // await FirebaseMessaging.instance.requestPermission();
+    await FirebaseMessaging.instance.requestPermission();
   }
 
   Map<String, Map<String, String>> languages = await di.init();

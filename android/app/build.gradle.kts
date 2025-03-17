@@ -49,12 +49,12 @@ android {
             storeFile = file(keyProperties["storeFile"] as String)
             storePassword = keyProperties["storePassword"] as String
         }
-        create("debug") {
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
-            storeFile = file("${System.getProperty("user.home")}/.android/debug.keystore")
-            storePassword = "android"
-        }
+        // create("debug") {
+        //     keyAlias = "androiddebugkey"
+        //     keyPassword = "android"
+        //     storeFile = file("${System.getProperty("user.home")}/.android/debug.keystore")
+        //     storePassword = "android"
+        // }
     }
 
     buildTypes {
