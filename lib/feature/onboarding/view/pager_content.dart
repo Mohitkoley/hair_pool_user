@@ -117,7 +117,7 @@ class PagerContent extends StatelessWidget {
                                 color: Theme.of(context)
                                     .colorScheme
                                     .primary
-                                    .withOpacity(0.7),
+                                    .withAlpha(70),
                               ),
                             ),
                           ),
@@ -202,11 +202,10 @@ void _checkPermissionAndNavigate() async {
     if (response.isSuccess) {
       Get.find<LocationController>()
           .saveAddressAndNavigate(address, false, '', false, true);
+    } else {
+      Get.back();
+      Get.offAllNamed(RouteHelper.getPickMapRoute("", false, "", null, null));
     }
-    // else {
-    //   Get.back();
-    //   Get.offAllNamed(RouteHelper.getPickMapRoute("", false, "", null, null));
-    // }
     Get.offAll(HomeScreen(
       showServiceNotAvailableDialog: false,
     ));
