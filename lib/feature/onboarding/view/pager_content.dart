@@ -22,7 +22,7 @@ class PagerContent extends StatelessWidget {
               children: [
                 Expanded(
                   child: Stack(
-                    alignment: Alignment.bottomCenter,
+                    alignment: Alignment.topCenter,
                     children: [
                       Image.asset(
                         Images.onBoardingTopTwo,
@@ -37,7 +37,7 @@ class PagerContent extends StatelessWidget {
                           children: [
                             SizedBox(
                                 child: Image.asset(image,
-                                    height: Get.height * 0.22)),
+                                    height: Get.height * 0.4)),
                             const SizedBox(
                                 height: Dimensions.paddingSizeExtraMoreLarge),
                             Text(
@@ -78,14 +78,14 @@ class PagerContent extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: Get.height * 0.25,
-                  child: Image.asset(
-                    Images.onBoardingBottomThree,
-                    width: Get.width,
-                    fit: BoxFit.fitHeight,
-                  ),
-                )
+                // SizedBox(
+                //   height: Get.height * 0.25,
+                //   child: Image.asset(
+                //     Images.onBoardingBottomThree,
+                //     width: Get.width,
+                //     fit: BoxFit.fitHeight,
+                //   ),
+                // )
               ],
             )
           : Column(
@@ -124,14 +124,15 @@ class PagerContent extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
-                      bottom: -10,
-                      left: 40,
-                      right: 40,
-                      child: Image.asset(
-                        topImage,
+                    if (topImage.isNotEmpty)
+                      Positioned(
+                        bottom: -10,
+                        left: 40,
+                        right: 40,
+                        child: Image.asset(
+                          topImage,
+                        ),
                       ),
-                    ),
                   ],
                 ),
                 SizedBox(
