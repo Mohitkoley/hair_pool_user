@@ -24,17 +24,17 @@ class PagerContent extends StatelessWidget {
                   child: Stack(
                     alignment: Alignment.topCenter,
                     children: [
-                      Image.asset(
-                        Images.onBoardingTopTwo,
-                        width: Get.width,
-                        fit: BoxFit.cover,
-                      ),
                       Padding(
                         padding: const EdgeInsets.only(
                             bottom: Dimensions.paddingSizeExtraMoreLarge),
                         child: Column(
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            Image.asset(
+                              Images.onBoardingTop,
+                              width: Get.width,
+                              fit: BoxFit.cover,
+                            ),
                             SizedBox(
                                 child: Image.asset(image,
                                     height: Get.height * 0.4)),
